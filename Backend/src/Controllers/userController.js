@@ -13,6 +13,8 @@ const generateJWT = (user, message, statusCode, res) => {
         .cookie(cookieName, token, {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
             httpOnly: true,
+            secure : true,
+            sameSite:"None"
         })
         .json({
             success: true,
@@ -47,10 +49,7 @@ const patientRegister = asyncHandler(async (req, res, next) => {
     return res
         .status(200)
         .json(new apiResponse(200, user, "User Registered Successfull"))
-    // return res.status(200).json({
-    //     success : true,
-    //     message : "User Registered Successfully"
-    // })
+   
 })
 
 const login = asyncHandler(async (req, res, next) => {
@@ -73,7 +72,7 @@ const login = asyncHandler(async (req, res, next) => {
     }
 
     generateJWT(user, "Login Successfuly", 200, res)
-    //return res.status(200).json(new apiResponse(200, user, "User logged In Successfully"))
+    
 })
 
 const addNewAdmin = asyncHandler(async (req, res, next) => {
@@ -117,7 +116,7 @@ const adminLogout = asyncHandler(async (req, res, next) => {
         .clearCookie("adminToken")
         .json(new apiResponse(200, {}, "Admin Logout Successfully"))
 })
-// User Ko Front end Mei Get Krny Ky Lye 
+
 const getUserDetails = asyncHandler(async (req, res, next) => {
     const user = req.user
     return res.status(200).json(new apiResponse(200, user))
@@ -125,7 +124,7 @@ const getUserDetails = asyncHandler(async (req, res, next) => {
 
 const getAllDoctors = asyncHandler(async (req, res, next) => {
     const doctors = await User.find({ role: "Doctor" })
-    //return res.status(200).json(new apiResponse(200, doctors, "Doctor Data fetchedn Successfully!"))
+    
     res.status(200).json({
         success: true,
         doctors

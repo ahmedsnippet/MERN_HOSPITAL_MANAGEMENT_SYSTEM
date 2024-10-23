@@ -1,0 +1,86 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav .hamburger {
+    font-size: 30px;
+    display: none;
+}
+
+nav ul li a:hover {
+    color: #8570ed;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.loginBtn {
+    background: linear-gradient(140deg, #9083d5, #271776ca);
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #fff;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+.logoutBtn {
+    background: linear-gradient(140deg, #9083d5, #271776ca);
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #fff;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 15px 7.5px;
+        transition: 0.3s;
+        position: fixed;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        top: 0;
+        background: #ffffffbf;
+        z-index: 2;
+    }
+
+    .navbar-list {
+        display: none;
+    }
+
+    nav .hamburger {
+        display: flex;
+    }
+}
